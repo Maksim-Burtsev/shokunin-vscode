@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shokunin Selection Swatches</title>
+  <style>
+    :root {
+      --paper: #FCFAF2;
+      --paper-alt: #F6EFE2;
+      --line: #F4EEE0;
+      --ink: #303841;
+      --ink-strong: #3A3E44;
+      --muted: #777269;
+      --border: #E8DCC8;
+      --blue: #D7EAF2;
+      --blue-soft: #D7EAF280;
+      --amber: #F1D276;
+      --warning: #F7E6C8;
+      --string: #157A5B;
+      --function: #006FAE;
+      --type: #8F4155;
+      --property: #4E5962;
+      --operator: #5C6268;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #EFE6D6;
+      color: var(--ink);    
+      font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      color: var(--ink-strong);
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      margin-top: 34px;
+      font-size: 18px;
+    }
+
+    p {
+      max-width: 760px;
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      min-height: 78px;
+      border: 1px solid var(--border);
+      background: var(--paper);
+      padding: 12px;
+    }
+
+    .chip-swatch {
+      height: 30px;
+      border: 1px solid #CFC3B4;
+      background: var(--swatch);
+    }
+
+    .chip-code {
+      margin-top: 8px;
+      font: 700 13px/1.2 Monaco, Menlo, Consolas, "Courier New", monospace;
+      color: var(--ink-strong);
+    }
+
+    .chip-note {
+      margin-top: 3px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .option {
+      display: contents;
+    }
+
+    .meta,
+    .sample {
+      border: 1px solid var(--border);
+      background: var(--paper);
+    }
+
+    .meta {
+      padding: 12px;
+    }
+
+    .name {
+      font-weight: 700;
+      color: var(--ink-strong);
+    }
+
+    .hex {
+      margin-top: 4px;
+      font: 700 13px/1.2 Monaco, Menlo, Consolas, "Courier New", monospace;
+      color: var(--ink);
+    }
+
+    .note {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .sample {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .line {
+      min-height: 34px;
+      padding: 5px 14px;
+      background: var(--line);
+      font: 18px/1.35 Monaco, Menlo, Consolas, "Courier New", monospace;
+      white-space: pre-wrap;
+    }
+
+    .line + .line {
+      border-top: 1px solid #E8DCC866;
+    }
+
+    .plain {
+      background: var(--paper);
+    }
+
+    .sel {
+      border-radius: 4px;
+      background: var(--selection);
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .fn {
+      color: var(--function);
+      font-weight: 700;
+    }
+
+    .kw {
+      color: var(--ink-strong);
+      font-weight: 700;
+    }
+
+    .type {
+      color: var(--type);
+      font-weight: 700;
+    }
+
+    .str {
+      color: var(--string);
+    }
+
+    .prop {
+      color: var(--property);
+    }
+
+    .op {
+      color: var(--operator);
+    }
+
+    .compact {
+      margin-top: 16px;
+    }
+
+    @media (max-width: 820px) {
+      main {
+        padding: 20px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .line {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Shokunin selection background candidates</h1>
+    <p>Static preview for replacing the current blue editor selection with warmer colors from the existing theme palette.</p>
+
+    <h2>Reference colors</h2>
+    <div class="palette">
+      <div class="chip" style="--swatch: var(--paper);">
+        <div class="chip-swatch"></div>
+        <div class="chip-code">#FCFAF2</div>
+        <div class="chip-note">editor background</div>
+      </div>
+      <div class="chip" style="--swatch: var(--line);">
+        <div class="chip-swatch"></div>
+        <div class="chip-code">#F4EEE0</div>
+        <div class="chip-note">current line highlight</div>
+      </div>
+      <div class="chip" style="--swatch: var(--blue);">
+        <div class="chip-swatch"></div>
+        <div class="chip-code">#D7EAF2</div>
+        <div class="chip-note">current selection</div>
+      </div>
+      <div class="chip" style="--swatch: var(--border);">
+        <div class="chip-swatch"></div>
+        <div class="chip-code">#E8DCC8</div>
+        <div class="chip-note">border / washi</div>
+      </div>
+      <div class="chip" style="--swatch: var(--amber);">
+        <div class="chip-swatch"></div>
+        <div class="chip-code">#F1D276</div>
+        <div class="chip-note">find match amber</div>
+      </div>
+      <div class="chip" style="--swatch: var(--warning);">
+        <div class="chip-swatch"></div>
+        <div class="chip-code">#F7E6C8</div>
+        <div class="chip-note">warning background</div>
+      </div>
+    </div>
+
+    <h2>Selection candidates on code</h2>
+    <div class="grid">
+      <div class="option" style="--selection: #D7EAF2;">
+        <div class="meta">
+          <div class="name">Current blue</div>
+          <div class="hex">#D7EAF2</div>
+          <div class="note">Baseline. Cold contrast against warm current line.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #D7EAF280;">
+        <div class="meta">
+          <div class="name">Current blue soft</div>
+          <div class="hex">#D7EAF280</div>
+          <div class="note">Existing inactive selection. Still cold.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #E8DCC8;">
+        <div class="meta">
+          <div class="name">Washi solid</div>
+          <div class="hex">#E8DCC8</div>
+          <div class="note">Very calm. Warm and close to borders.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #E8DCC880;">
+        <div class="meta">
+          <div class="name">Washi 50%</div>
+          <div class="hex">#E8DCC880</div>
+          <div class="note">Softest warm overlay. May be too subtle.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #E8DCC840;">
+        <div class="meta">
+          <div class="name">Washi 25%</div>
+          <div class="hex">#E8DCC840</div>
+          <div class="note">Barely visible on the current line.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #F1D27690;">
+        <div class="meta">
+          <div class="name">Amber 56%</div>
+          <div class="hex">#F1D27690</div>
+          <div class="note">Strong warm selection. Close to minimap find match.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #F1D27675;">
+        <div class="meta">
+          <div class="name">Amber 46%</div>
+          <div class="hex">#F1D27675</div>
+          <div class="note">Visible and warm. Already used for peek match.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #F1D27666;">
+        <div class="meta">
+          <div class="name">Amber 40%</div>
+          <div class="hex">#F1D27666</div>
+          <div class="note">Recommended candidate. Warm, visible, not too loud.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #F1D27650;">
+        <div class="meta">
+          <div class="name">Amber 31%</div>
+          <div class="hex">#F1D27650</div>
+          <div class="note">Gentler than recommended. Still readable.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #F1D27640;">
+        <div class="meta">
+          <div class="name">Amber 25%</div>
+          <div class="hex">#F1D27640</div>
+          <div class="note">Good inactive selection companion for amber 40%.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #F7E6C8;">
+        <div class="meta">
+          <div class="name">Warning warm</div>
+          <div class="hex">#F7E6C8</div>
+          <div class="note">Warm and clear. Slight warning feeling.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+
+      <div class="option" style="--selection: #F6EFE2;">
+        <div class="meta">
+          <div class="name">Paper alt</div>
+          <div class="hex">#F6EFE2</div>
+          <div class="note">Very close to current line. Too subtle for active selection.</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel"><span class="fn">check_integrity</span>(self, allow_dirty: <span class="type">bool</span> = False) -&gt; None:</span></div>
+          <div class="line plain">    <span class="sel">logger.<span class="fn">warning</span>(<span class="str">"Checksum mismatches found"</span>)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Candidate pairs</h2>
+    <p>Left part is active selection. Right part is inactive selection.</p>
+    <div class="grid compact">
+      <div class="option">
+        <div class="meta">
+          <div class="name">Recommended amber pair</div>
+          <div class="hex">active #F1D27666<br>inactive #F1D27640</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel" style="--selection:#F1D27666"><span class="fn">check_integrity</span>(self, allow_dirty:</span><span class="sel" style="--selection:#F1D27640"> <span class="type">bool</span> = False) -&gt; None:</span></div>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="meta">
+          <div class="name">Quiet washi pair</div>
+          <div class="hex">active #E8DCC8<br>inactive #E8DCC880</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel" style="--selection:#E8DCC8"><span class="fn">check_integrity</span>(self, allow_dirty:</span><span class="sel" style="--selection:#E8DCC880"> <span class="type">bool</span> = False) -&gt; None:</span></div>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="meta">
+          <div class="name">More visible amber pair</div>
+          <div class="hex">active #F1D27675<br>inactive #F1D27650</div>
+        </div>
+        <div class="sample">
+          <div class="line"><span class="kw">def</span> <span class="sel" style="--selection:#F1D27675"><span class="fn">check_integrity</span>(self, allow_dirty:</span><span class="sel" style="--selection:#F1D27650"> <span class="type">bool</span> = False) -&gt; None:</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

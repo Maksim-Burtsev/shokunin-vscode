@@ -1,8 +1,45 @@
-# Shokunin Light
+# Shokunin Light for VS Code
 
-A rice-paper light theme for VS Code, tuned for Python-focused craft.
+A rice-paper light theme for Python-focused craft: sumi classes, ume type hints, and asagi functions.
 
-Final theme label: **Shokunin Sumi Ume**.
+## Preview
+
+### Python
+
+![Python example](assets/preview.png)
+
+### Go
+
+![Go example](assets/preview-go.png)
+
+### TypeScript
+
+![TypeScript example](assets/preview-ts.png)
+
+## Installation
+
+### From Marketplace
+
+1. Open VS Code
+2. Go to Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
+3. Search for `Shokunin Light`
+4. Click **Install**
+5. `Ctrl+K Ctrl+T` / `Cmd+K Cmd+T` -> select **Shokunin Sumi Ume**
+
+### From VSIX
+
+1. Download the `.vsix` file from [Releases](https://github.com/Maksim-Burtsev/shokunin-vscode/releases)
+2. Run: `code --install-extension shokunin-light-*.vsix`
+
+### From Source
+
+```sh
+git clone https://github.com/Maksim-Burtsev/shokunin-vscode
+cd shokunin-vscode
+npm install
+npm run package
+code --install-extension shokunin-light-*.vsix
+```
 
 ## Palette
 
@@ -17,40 +54,6 @@ Final theme label: **Shokunin Sumi Ume**.
 | Constants / numbers | `#9A6000` |
 | Comments | `#777269` |
 
-## Debug locally
+## License
 
-1. Open this folder in VS Code.
-2. Press `F5` or run **Debug: Start Debugging**.
-3. A new Extension Development Host window opens with `examples/` and the theme selected.
-4. Open `theme_engine.py`, `Dockerfile`, `settings.yaml`, and `theme.json`.
-
-The included workspace sets:
-
-```json
-{
-  "workbench.colorTheme": "Shokunin Sumi Ume",
-  "editor.fontFamily": "Monaco, Menlo, Consolas, 'Courier New', monospace",
-  "editor.fontSize": 13,
-  "editor.lineHeight": 16,
-  "editor.semanticHighlighting.enabled": true
-}
-```
-
-Theme extensions cannot enforce editor font family or line height globally for users; these are included in the debug workspace to match the calibration preview as closely as possible.
-
-## Package
-
-```bash
-npm install
-npm run package
-```
-
-## Publish
-
-```bash
-npm run publish
-```
-
-## Notes
-
-The theme uses both TextMate token colors and semantic token colors. The semantic layer is especially important for Python/Pylance so that functions, methods, classes, type hints, enum members, constants, and properties can keep their intended roles.
+MIT

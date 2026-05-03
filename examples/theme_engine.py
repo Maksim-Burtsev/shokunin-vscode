@@ -1,50 +1,33 @@
-# app/domain/theme_engine.py
 from __future__ import annotations
 
+import asyncio
 from dataclasses import dataclass
 from enum import StrEnum
-from pathlib import Path
-from typing import Iterable, Self
+from typing import Final
 
-DEFAULT_PROFILE = "shokunin"
-MAX_RETRIES = 3
-
+DEFAULT_PROFILE: Final[str] = "shokunin"
+MIN_CONTRAST: Final[float] = 4.8
 
 class TokenRole(StrEnum):
     CALLABLE = "callable"
     STRUCTURE = "structure"
-
+    VALUE = "value"
 
 @dataclass(slots=True)
 class ThemeProfile:
     name: str
     accent: str
-    weights: dict[str, float]
-    contrast: float = 4.8
+    type_hint: str
+    weights: dict[TokenRole, float]
 
+    @property
+    def is_accessible(self) -> bool:
+        return sum(self.weights.values()) >= MIN_CONTRAST
 
 class ThemeEngine:
-    def __init__(self, root: Path) -> None:
-        self.root = root
-        self.profile = load_profile(DEFAULT_PROFILE)
-
     async def render(self, source: str) -> ThemeProfile:
-        palette = await self.client.fetch_palette(source)
-        profile = ThemeProfile(
-            name="Shokunin",
-            accent=palette.blue,
-            weights={"ink": 1.0, "paper": 0.8},
-        )
-        if len(palette.warnings) > 0:
-            raise ThemeError("palette is too noisy")
-        return profile
-
-
-def normalize_token(token: Token, roles: Iterable[TokenRole]) -> TokenRole:
-    match token.kind:
-        case "method" | "function":
-            return TokenRole.CALLABLE
-        case "class" | "type":
-            return TokenRole.STRUCTURE
-        case _:
-            return None
+        await asyncio.sleep(0)
+        if "kanagawa" in source:
+            raise ValueError("use Sumi classes and Ume type hints")
+        weights = dict.fromkeys(TokenRole, 1.6)
+        return ThemeProfile(DEFAULT_PROFILE, "#006FAE", "#8F4155", weights)

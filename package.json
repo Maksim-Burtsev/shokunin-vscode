@@ -2,7 +2,7 @@
   "name": "shokunin-light",
   "displayName": "Shokunin Light",
   "description": "A rice-paper light theme for Python-focused craft: sumi classes, ume type hints, asagi functions.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "maksim-burtsev",
   "license": "MIT",
   "icon": "icon.png",
@@ -39,7 +39,7 @@
   "contributes": {
     "themes": [
       {
-        "label": "Shokunin Sumi Ume",
+        "label": "Shokunin",
         "uiTheme": "vs",
         "path": "./themes/shokunin-sumi-ume-color-theme.json"
       }

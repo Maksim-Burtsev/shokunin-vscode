@@ -24,7 +24,7 @@ A rice-paper light theme for Python-focused craft: sumi classes, ume type hints,
 2. Go to Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
 3. Search for `Shokunin Light`
 4. Click **Install**
-5. `Ctrl+K Ctrl+T` / `Cmd+K Cmd+T` -> select **Shokunin Sumi Ume**
+5. `Ctrl+K Ctrl+T` / `Cmd+K Cmd+T` -> select **Shokunin**
 
 ### From VSIX
 

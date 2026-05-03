@@ -1,6 +1,6 @@
 {
   "$schema": "vscode://schemas/color-theme",
-  "name": "Shokunin Sumi Ume",
+  "name": "Shokunin",
   "type": "light",
   "semanticHighlighting": true,
   "colors": {

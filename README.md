@@ -28,14 +28,14 @@ A rice-paper light theme for Python-focused craft: sumi classes, ume type hints,
 
 ### From VSIX
 
-1. Download the `.vsix` file from [Releases](https://github.com/Maksim-Burtsev/shokunin-vscode/releases)
+1. Download the `.vsix` file from [Releases](https://github.com/Maksim-Burtsev/shokunin-theme/releases)
 2. Run: `code --install-extension shokunin-light-*.vsix`
 
 ### From Source
 
 ```sh
-git clone https://github.com/Maksim-Burtsev/shokunin-vscode
-cd shokunin-vscode
+git clone https://github.com/Maksim-Burtsev/shokunin-theme
+cd shokunin-theme
 npm install
 npm run package
 code --install-extension shokunin-light-*.vsix

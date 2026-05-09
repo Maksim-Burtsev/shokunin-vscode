@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+- Update merge conflict colors.
+- Use kintsugi styling for modified git decorations.
+- Fix repository links.
+
 ## 0.1.1
 
 - Rename theme selector label to Shokunin.

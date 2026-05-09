@@ -8,7 +8,7 @@
   "icon": "icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Maksim-Burtsev/shokunin-vscode"
+    "url": "https://github.com/Maksim-Burtsev/shokunin-theme"
   },
   "categories": [
     "Themes"

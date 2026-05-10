@@ -16,7 +16,7 @@ A rice-paper light theme for Python-focused craft: sumi classes, ume type hints,
 
 ![TypeScript example](assets/preview-ts.png)
 
-## Installation
+## VS Code Installation
 
 ### From Marketplace
 
@@ -40,6 +40,18 @@ npm install
 npm run package
 code --install-extension shokunin-light-*.vsix
 ```
+
+## iTerm2 Installation
+
+Shokunin also includes an iTerm2 color preset generated from the VS Code
+integrated terminal colors.
+
+1. Download `iterm/shokunin.itermcolors` from this repository or from a GitHub Release.
+2. Open iTerm2.
+3. Go to `Settings` / `Preferences` -> `Profiles` -> `Colors`.
+4. Open `Color Presets...` -> `Import`.
+5. Select `shokunin.itermcolors`.
+6. Open `Color Presets...` again and choose **shokunin**.
 
 ## Palette
 

@@ -1,6 +1,9 @@
 .git/
 .github/
 .gitignore
+.env
+.env.*
+AGENTS.md
 .vscode/
 node_modules/
 *.vsix
@@ -8,4 +11,6 @@ node_modules/
 docs/
 examples/
 assets/
+iterm/
+scripts/
 *.code-workspace

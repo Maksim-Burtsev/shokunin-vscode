@@ -29,9 +29,12 @@
     "vscode": "^1.86.0"
   },
   "scripts": {
+    "test": "node --test",
     "package": "vsce package",
+    "package:check": "npm run package && node scripts/check-vsix-contents.mjs",
     "publish": "vsce publish",
-    "publish:pre": "vsce publish --pre-release"
+    "publish:pre": "vsce publish --pre-release",
+    "generate:iterm": "node scripts/generate-itermcolors.mjs"
   },
   "devDependencies": {
     "@vscode/vsce": "^3.2.2"
